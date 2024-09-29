@@ -1,6 +1,5 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Splash from '../screens/splash';
 import Home from '../screens/home';
 import SignIn from '../screens/signIn';
 import SignUp from '../screens/signUp';
@@ -14,6 +13,8 @@ import { Animated, Easing } from 'react-native';
 import { useRef } from 'react';
 import AppBar from '../components/AppBar';
 import OtpVerificationScreen from '../screens/OtpVerificationScreen';
+import OnboardingScreen from '../screens/Onboarding';
+import Splash from '../screens/Splash';
 
 
 const Stack = createNativeStackNavigator();
@@ -128,6 +129,7 @@ function AppNavigation() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="splash">
         <Stack.Screen name="splash" options={{headerShown: false}} component={Splash} />
+        <Stack.Screen name="onboarding" options={{headerShown: false}} component={OnboardingScreen} />
         <Stack.Screen name="home" options={{headerShown: false}} component={Home} />
         <Stack.Screen name="otp" options={{headerShown: false}} component={OtpVerificationScreen} />
         <Stack.Screen name="signin"
