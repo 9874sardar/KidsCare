@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import AppButton from '../components/AppButton';
 
 const img = require('../assets/homeImg.png');
 
@@ -19,16 +20,18 @@ const Home = ({navigation}) => {
         </Text>
       </View>
       <View style={styles.footer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('signup')}>
-          <Text style={styles.buttonText}>Sign Up</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.button, {backgroundColor: 'white'}]}
-          onPress={() => navigation.navigate('signin')}>
-          <Text style={[styles.buttonText, {color: '#6d28d9'}]}>Log In</Text>
-        </TouchableOpacity>
+        <AppButton
+          onPress={() => navigation.navigate('signup')}
+          title={"Register"}
+          width={"50%"}
+          purple={true}
+        />
+        <AppButton 
+          onPress={() => navigation.navigate('signin')}
+          title={"Log in"}
+          width={"50%"}
+          purple={false}
+        />
       </View>
     </View>
   );
@@ -80,19 +83,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     paddingBottom: 100,
-  },
-  button: {
-    backgroundColor: '#6d28d9',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 10,
-    alignItems: 'center',
-    width: '40%',
-    borderWidth: 1,
-    borderColor: '#6d28d9',
-  },
-  buttonText: {
-    fontSize: 18,
-    color: 'white',
   },
 });

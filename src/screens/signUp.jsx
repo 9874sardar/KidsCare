@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import HeadBoxes from '../utils/HeadBoxes';
 import CustomCheckBox from '../utils/CustomCheckBox';
+import AppButton from '../components/AppButton';
 
 
 const SignUp = ({navigation}) => {
@@ -34,9 +35,15 @@ const SignUp = ({navigation}) => {
     <View style={{alignItems:"center"}}>
 
       {/* Button */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('otp')} >
-        <Text style={styles.buttonText}>Get OTP</Text>
-      </TouchableOpacity>
+      {/* <TouchableOpacity style={styles.button}  >
+        <Text style={styles.buttonText}></Text>
+      </TouchableOpacity> */}
+      <AppButton 
+        onPress={() => navigation.navigate('otp')}
+        title={"Get OTP"}
+        width={"65%"}
+        purple={true}
+      />
 
       {/* Footer */}
       <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('signin')}>
@@ -81,29 +88,12 @@ const styles = StyleSheet.create({
   input: {
     width: '100%',
     height: 50,
+    color: "#000",
     backgroundColor: '#FFF',
     borderRadius: 15,
     paddingLeft: 15,
     marginBottom: 15,
     elevation: 2, // Shadow for Android
-  },
-
-  
-  button: {
-    width: '60%',
-    height: 50,
-    backgroundColor: '#7065F0',
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-    elevation: 2, // Shadow for Android
-  },
-  buttonText: {
-    color: '#FFF',
-    fontSize: 24,
-    fontWeight: '700',
-    fontFamily:'Poppins',
   },
   footerText: {
     marginTop: 10,

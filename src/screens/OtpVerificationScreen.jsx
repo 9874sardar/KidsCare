@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
+import AppButton from "../components/AppButton";
 
 const OtpVerificationScreen = ({navigation}) => {
   const [otp, setOtp] = useState(["", "", "", ""]);
@@ -69,9 +70,12 @@ const OtpVerificationScreen = ({navigation}) => {
           </View>
 
           {/* Register Button */}
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('dashboard')}>
-            <Text style={styles.buttonText}>Register</Text>
-          </TouchableOpacity>
+          <AppButton 
+            onPress={() => navigation.navigate('dashboard')}
+            title={"Register"}
+            width={"75%"}
+            purple={true}
+          />
         </View>
       </View>
     </View>
@@ -162,19 +166,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginHorizontal: 5,
     elevation: 2, // Android shadow
-  },
-  button: {
-    width: "70%",
-    height: 60,
-    backgroundColor: "#7065F0",
-    borderRadius: 16,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#FFF",
-    fontSize: 24,
-    fontWeight: "bold",
   },
 });
 

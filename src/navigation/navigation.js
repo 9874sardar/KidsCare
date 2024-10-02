@@ -15,10 +15,22 @@ import AppBar from '../components/AppBar';
 import OtpVerificationScreen from '../screens/OtpVerificationScreen';
 import OnboardingScreen from '../screens/Onboarding';
 import Splash from '../screens/Splash';
+import MenuDetailScreen from '../screens/MenuDetailScreen';
 
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+
+const LunchboxStack = () => {
+  return (
+    <Stack.Navigator
+    // initialRouteName='PRODUCT_DETAILS'
+    >
+      <Stack.Screen name="Menu" component={Lunchbox} />
+      <Stack.Screen name="Menu_Details" component={MenuDetailScreen} />
+    </Stack.Navigator>
+  );
+};
 
 function DashboardTabs() {
   return (
@@ -104,7 +116,7 @@ function DashboardTabs() {
         />
       <Tab.Screen
         name="Lunchbox"
-        component={Lunchbox}
+        component={LunchboxStack}
         options={{header: () =>(<AppBar/>),tabBarLabel: 'Lunchbox'}}
         // options={{ tabBarLabel: '' }}
         />

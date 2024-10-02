@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import HeadBoxes from '../utils/HeadBoxes';
 import CustomCheckBox from '../utils/CustomCheckBox';
+import AppButton from '../components/AppButton';
 
 const SignIn = ({navigation}) => {
   const [isSelected, setSelection] = useState(false);
@@ -36,9 +37,12 @@ const SignIn = ({navigation}) => {
       </View>
     <View style={{alignItems:"center"}}>
       {/* Button */}
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Log In</Text>
-      </TouchableOpacity>
+      <AppButton
+        onPress={() => navigation.navigate('dashboard')}
+        purple={true}
+        title={"Login"}
+        width={"65%"}
+      />
 
       {/* Footer */}
       <TouchableOpacity style={styles.footerText} onPress={() => navigation.navigate('signup')}>
@@ -88,22 +92,6 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     marginBottom: 15,
     elevation: 2, // Shadow for Android
-  },
-  button: {
-    width: '60%',
-    height: 50,
-    backgroundColor: '#7065F0',
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-    elevation: 2, // Shadow for Android
-  },
-  buttonText: {
-    color: '#FFF',
-    fontSize: 24,
-    fontWeight: '700',
-    fontFamily:'Poppins',
   },
   footerText: {
     marginTop: 10,

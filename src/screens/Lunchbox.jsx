@@ -16,8 +16,7 @@ const items = {
     {
       id: 1,
       title: "Badam Milk",
-      description:
-        "A wholesome platter of Milk (Saffron Almond Milk, Badam Doodh).",
+      description: "A wholesome platter of Milk .",
       rating: 4.2,
       price: "Flat ₹200 OFF",
       image: require("../assets/homeImg.png"),
@@ -37,59 +36,69 @@ const items = {
     {
       id: 1,
       title: "Fresh Strawberry Juice",
-      description: "A wholesome platter of Strawberry.",
+      description: "A flavorful platter of meats, rice, and sides.",
       rating: 4.2,
       price: "Flat ₹200 OFF",
-      image: require("../assets/homeImg.png"),
+      image: require("../assets/food/vegThali.png"),
     },
     {
       id: 2,
       title: "Coconut Juice",
-      description: "A wholesome platter of Coconut.",
+      description: "A wholesome platter of vegetables, rice, and sides.",
       rating: 4.2,
       price: "Flat ₹200 OFF",
-      image: require("../assets/homeImg.png"),
+      image: require("../assets/food/nonVeg.png"),
     },
   ],
 };
 
-const CategoryList = () => {
+const CategoryList = ({navigation}) => {
   const [selectedCategory, setSelectedCategory] = useState("drinks");
 
   const renderCard = ({ item }) => (
-    <>
-    <View style={styles.card}>
-      <Image source={item.image} style={styles.image} />
+    <TouchableOpacity onPress={() => navigation.navigate('Menu_Details')}>
+      <View style={styles.card}>
+        <Image source={item.image} style={styles.image} />
 
-      <View style={styles.cardContent}>
-        <View style={styles.header}>
-          <Text style={styles.title}>{item.title}</Text>
-          <Icon name="heart-outline" size={20} color="#555" />
-        </View>
+        <View style={styles.cardContent}>
+          <View style={styles.header}>
+            <Text style={styles.title}>{item.title}</Text>
+            <View style={{flexDirection:"row",justifyContent:"space-evenly"}}>
+              <Image
+                style={{ height: 18, width: 18,padding:8,margin:2,marginRight:10 }}
+                source={require("../assets/food/nonVegLogo.png")}
+              />
+              <Icon name="heart-outline" size={24} color="#555" />
+            </View>
+          </View>
 
-        <Text style={styles.description}>{item.description}</Text>
+          <Text style={styles.description}>{item.description}</Text>
 
-        {/* <View style={styles.row}> */}
+          {/* <View style={styles.row}> */}
           <View style={styles.ratingContainer}>
-            <View style={{flexDirection: "row",}}>
-              <MaterialCommunityIcons name="star" size={14} color="#fabb18" />
+            <View style={{ flexDirection: "row",paddingBottom:4 }}>
+              <MaterialCommunityIcons name="star" size={18} color="#fabb18" />
               <Text style={styles.rating}>{item.rating}</Text>
             </View>
 
             <Text style={styles.discount}>
-              <MaterialCommunityIcons name="tag" size={14} color="#007aff" />
+              {/* <MaterialCommunityIcons name="tag" size={14} color="#007aff" /> */}
+              <Image
+                source={require("../assets/discount.png")}
+                style={{ height: 15, width: 15 }}
+              />
               {item.discount} Flat $200 OFF
             </Text>
           </View>
-        {/* </View> */}
+          {/* </View> */}
+        </View>
       </View>
-    </View>
-    </>
+    </TouchableOpacity>
   );
 
   return (
     <View style={styles.container}>
-      <View style={{height:"30%"}}>
+      <View style={{ height: "30%" }}>
         <Carousel />
       </View>
       <View style={styles.categoryButtons}>
@@ -177,18 +186,14 @@ const styles = StyleSheet.create({
     borderColor: "#e0e0e0",
     borderWidth: 1,
     overflow: "hidden",
-
   },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
   },
   image: {
-    borderWidth:3,
-    borderColor:"red",
     width: "25%",
     height: "100%",
-    // borderTopLeftRadius:10,
   },
   cardContent: {
     marginLeft: 10,
@@ -197,13 +202,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: "600",
     color: "#000",
   },
   description: {
     fontSize: 14,
-    color: "#777",
+    color: "#000",
     marginVertical: 4,
+    fontFamily: "Poppins",
   },
   row: {
     marginTop: 8,
@@ -219,7 +225,8 @@ const styles = StyleSheet.create({
   },
   discount: {
     fontSize: 14,
-    color: "#007aff",
+    color: "#000",
+    fontWeight: "600",
     flexDirection: "row",
     alignItems: "center",
   },
